@@ -1,0 +1,32 @@
+*{
+    border: 0;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;}
+/* *** */
+body{
+    font-family: Arial, Helvetica, sans-serif;}
+h1{
+    font: 600 35px arial, sans-serif;}
+h2{
+    font: 600 20px arial, sans-serif;}
+.colunas{
+    display: flex;
+    margin-top: 50px;
+    width: 100vw;
+    justify-content: space-around;}
+input{
+    outline: none;
+    border-bottom: 1.7px #000 solid;
+}
+
+
+
+
+
+
+
+
+
+
+
