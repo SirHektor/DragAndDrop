@@ -4,59 +4,58 @@ const colunas = document.querySelectorAll('.coluna');
 let tarefaArrastada = null;
 
 tarefas.forEach(tarefa => {
-    tarefa.addEventListener('dragstart', iniciarArrasto)
-    tarefa.addEventListener('dragend', finalizarArrasto)
-})
+    tarefa.addEventListener('dragstart', iniciarArrasto);
+    tarefa.addEventListener('dragend', finalizarArrasto);
+});
 
 colunas.forEach(coluna => {
-    coluna.addEventListener('dragover', permitirSoltar)
-    coluna.addEventListener('drop', soltarTarefa)
-})
+    coluna.addEventListener('dragover', permitirSoltar);
+    coluna.addEventListener('drop', soltarTarefa);
+});
 
-function iniciarArrasto(event){
+function iniciarArrasto(event) {
     tarefaArrastada = this;
-    this.classlist.add('arrastando')
+    this.classList.add('arrastando');
 }
 
-function finalizarArrasto(event){
-    this.classlist.remove("arrastando")
+function finalizarArrasto(event) {
+    this.classList.remove('arrastando');
 }
 
-function permitirSoltar(event){
+function permitirSoltar(event) {
     event.preventDefault();
 }
 
-function soltarTarefa(event){
+function soltarTarefa(event) {
     event.preventDefault();
-    
-    if(tarefaArrastada){
+
+    if (tarefaArrastada) {
         this.querySelector('.tarefas').appendChild(tarefaArrastada);
         tarefaArrastada = null;
-
     }
 }
 
 const formAdicionarTarefa = document.getElementById('adicionar-tarefa');
 
-formAdicionarTarefa.addEventListener('submit', adicionarTarefa)
+formAdicionarTarefa.addEventListener('submit', adicionarTarefa);
 
-function adicionarTarefa(event){
+function adicionarTarefa(event) {
     event.preventDefault();
 
-    const novaTarefa = document.getElementById('nova-tarefa').value
+    const novaTarefa = document.getElementById('nova-tarefa').value;
 
-    if(novaTarefa){
+    if (novaTarefa) {
         const novaTarefaLi = document.createElement('li');
         novaTarefaLi.innerHTML = novaTarefa;
         novaTarefaLi.draggable = true;
         novaTarefaLi.classList.add('tarefa');
+        novaTarefaLi.classList.add('fade-in');
 
-        document.getElementById('tarefas-a-fazer').appendChild(novaTarefaLi) 
-        document.getElementById('nova-tarefa').value = ""
+        document.getElementById('tarefas-a-fazer').appendChild(novaTarefaLi);
 
-        novaTarefaLi.addEventListener('dragstart', iniciarArrasto)
-        novaTarefaLi.addEventListener('dragend', finalizarArrasto4)
+        document.getElementById('nova-tarefa').value = '';
+
+        novaTarefaLi.addEventListener('dragstart', iniciarArrasto);
+        novaTarefaLi.addEventListener('dragend', finalizarArrasto);
     }
 }
-
-
